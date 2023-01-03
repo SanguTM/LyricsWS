@@ -1,0 +1,77 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getLyricsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="xs:string"/>
+                <xs:element name="genre" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getLyricsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="lyric" type="tns:lyric"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCountryListRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCountryListResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country_list" type="tns:countries"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getGenreListRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getGenreListResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="genre_list" type="tns:genres"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="genres">
+        <xs:sequence>
+            <xs:element name="POP" type="xs:string"/>
+            <xs:element name="HIP_HOP" type="xs:string"/>
+            <xs:element name="DANCE" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="countries">
+        <xs:sequence>
+            <xs:element name="Germany" type="xs:string"/>
+            <xs:element name="GreatBritain" type="xs:string"/>
+            <xs:element name="Portugal" type="xs:string"/>
+            <xs:element name="Poland" type="xs:string"/>
+            <xs:element name="Italy" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="lyric">
+        <xs:sequence>
+            <xs:element name="artist" type="xs:string"/>
+            <xs:element name="song" type="xs:string"/>
+            <xs:element name="lyrics" type="xs:string"/>
+            <xs:element name="translation" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

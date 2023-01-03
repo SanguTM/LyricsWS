@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="6fc18135-8fce-476a-b070-a8a91cf29907" activeEnvironment="Default" name="lyrics" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b62ee7c3-2610-468f-8ce0-c5c433c0d87b" wsaVersion="NONE" name="LyricsPortSoap11" type="wsdl" bindingName="{http://spring.io/guides/gs-producing-web-service}LyricsPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/lyrics.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/lyrics.wsdl"><con:part><con:url>http://localhost:8080/ws/lyrics.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://spring.io/guides/gs-producing-web-service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://spring.io/guides/gs-producing-web-service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://spring.io/guides/gs-producing-web-service">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://spring.io/guides/gs-producing-web-service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getLyricsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="country" type="xs:string"/>
+            <xs:element name="genre" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getLyricsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="lyric" type="tns:lyric"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="lyric">
+        <xs:sequence>
+          <xs:element name="artist" type="xs:string"/>
+          <xs:element name="song" type="xs:string"/>
+          <xs:element name="lyrics" type="xs:string"/>
+          <xs:element name="translation" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getLyricsRequest">
+    <wsdl:part element="tns:getLyricsRequest" name="getLyricsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLyricsResponse">
+    <wsdl:part element="tns:getLyricsResponse" name="getLyricsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LyricsPort">
+    <wsdl:operation name="getLyrics">
+      <wsdl:input message="tns:getLyricsRequest" name="getLyricsRequest"></wsdl:input>
+      <wsdl:output message="tns:getLyricsResponse" name="getLyricsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LyricsPortSoap11" type="tns:LyricsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getLyrics">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getLyricsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLyricsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LyricsPortService">
+    <wsdl:port binding="tns:LyricsPortSoap11" name="LyricsPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="81466f01-64f1-4104-a0e1-5da3a5fff943" isOneWay="false" action="" name="getLyrics" bindingOperationName="getLyrics" type="Request-Response" outputName="getLyricsResponse" inputName="getLyricsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f0a5fe71-3569-4267-80f2-a52689c3c6a7" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gs="http://spring.io/guides/gs-producing-web-service">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gs:getLyricsRequest>\r
+         <gs:country>DE</gs:country>\r
+         <gs:genre>ROCK</gs:genre>\r
+      </gs:getLyricsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://spring.io/guides/gs-producing-web-service/LyricsPort/getLyricsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
